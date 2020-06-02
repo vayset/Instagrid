@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,11 +20,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Instagrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMm-kb-6F1">
-                                <rect key="frame" x="147.5" y="57" width="119" height="39"/>
+                                <rect key="frame" x="147.66666666666666" y="13" width="118.66666666666666" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="Q7e-kq-u0f"/>
                                     <constraint firstAttribute="width" constant="118.67" id="juL-Wm-sva"/>
@@ -34,33 +34,59 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eme-H4-AgB">
-                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <rect key="frame" x="57" y="218" width="300" height="300"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKQ-jk-NLD">
                                         <rect key="frame" x="15" y="18" width="127" height="127"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Plus" translatesAutoresizingMaskIntoConstraints="NO" id="9qU-sU-gu0">
+                                                <rect key="frame" x="43.666666666666671" y="43.666666666666686" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="H33-Vd-waD"/>
+                                                    <constraint firstAttribute="height" constant="40" id="US5-AZ-WXW"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="oKQ-jk-NLD" secondAttribute="height" multiplier="1:1" id="5pP-AW-iuM"/>
+                                            <constraint firstItem="9qU-sU-gu0" firstAttribute="centerY" secondItem="oKQ-jk-NLD" secondAttribute="centerY" id="UNi-MU-hbc"/>
+                                            <constraint firstItem="9qU-sU-gu0" firstAttribute="centerX" secondItem="oKQ-jk-NLD" secondAttribute="centerX" id="tpL-Ha-4e2"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tox-4N-vVj">
                                         <rect key="frame" x="158" y="18" width="127" height="127"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Plus" translatesAutoresizingMaskIntoConstraints="NO" id="aHh-nn-J0B">
+                                                <rect key="frame" x="43.666666666666686" y="43.666666666666686" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="dgU-ZV-Z4m"/>
+                                                    <constraint firstAttribute="height" constant="40" id="y0Y-y7-yIg"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="aHh-nn-J0B" firstAttribute="centerY" secondItem="tox-4N-vVj" secondAttribute="centerY" id="Tzc-Tg-py3"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="tox-4N-vVj" secondAttribute="height" multiplier="1:1" id="oha-bI-jpL"/>
+                                            <constraint firstItem="aHh-nn-J0B" firstAttribute="centerX" secondItem="tox-4N-vVj" secondAttribute="centerX" id="vlK-s6-wpi"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuM-PD-Zro">
                                         <rect key="frame" x="15" y="159" width="270" height="127"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sjp-Mf-xMl">
-                                                <rect key="frame" x="115" y="43" width="40" height="40"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Plus" translatesAutoresizingMaskIntoConstraints="NO" id="MXA-QT-PSr">
+                                                <rect key="frame" x="115" y="43.666666666666686" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="R6W-zl-C4F"/>
+                                                    <constraint firstAttribute="width" constant="40" id="hK6-AV-d4g"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
+                                            <constraint firstItem="MXA-QT-PSr" firstAttribute="centerX" secondItem="WuM-PD-Zro" secondAttribute="centerX" id="8Ql-LK-AVH"/>
+                                            <constraint firstItem="MXA-QT-PSr" firstAttribute="centerY" secondItem="WuM-PD-Zro" secondAttribute="centerY" id="IbM-Q6-Etw"/>
                                             <constraint firstAttribute="width" secondItem="WuM-PD-Zro" secondAttribute="height" multiplier="270:127" id="hcd-4F-8Oq"/>
                                         </constraints>
                                     </view>
@@ -84,7 +110,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="d8F-nB-rMf">
-                                <rect key="frame" x="57" y="777" width="300" height="80"/>
+                                <rect key="frame" x="57" y="651" width="300" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Layout 1" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8cs-OZ-Gub">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -102,20 +128,20 @@
                                 </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="t6g-AH-Srg">
-                                <rect key="frame" x="167" y="777" width="80" height="80"/>
+                                <rect key="frame" x="167" y="651" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Det-DE-K0Y"/>
                                     <constraint firstAttribute="width" secondItem="t6g-AH-Srg" secondAttribute="height" multiplier="1:1" id="y2b-wh-Xc7"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="78Z-bg-bSv">
-                                <rect key="frame" x="127" y="242.5" width="160.5" height="47"/>
+                                <rect key="frame" x="126.66666666666667" y="162.33333333333334" width="160.66666666666663" height="47"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ArrowUp" translatesAutoresizingMaskIntoConstraints="NO" id="uhd-cv-zXP">
-                                        <rect key="frame" x="73" y="0.0" width="14" height="10"/>
+                                        <rect key="frame" x="73.333333333333329" y="0.0" width="14" height="10"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3t-Ez-WlS">
-                                        <rect key="frame" x="0.0" y="18" width="160.5" height="29"/>
+                                        <rect key="frame" x="0.3333333333333286" y="18" width="160.33333333333337" height="29"/>
                                         <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -153,6 +179,7 @@
         <image name="ArrowUp" width="14" height="10"/>
         <image name="Layout 1" width="80" height="80"/>
         <image name="Layout 2" width="80" height="80"/>
+        <image name="Plus" width="40" height="40"/>
         <image name="Selected" width="80" height="80"/>
     </resources>
 </document>
