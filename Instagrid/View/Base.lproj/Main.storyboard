@@ -41,6 +41,7 @@
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="TgH-rd-fMh">
                                                 <rect key="frame" x="0.0" y="0.0" width="231" height="108"/>
+                                                <gestureRecognizers/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DMG-Gl-RXb">
                                                 <rect key="frame" x="0.0" y="123" width="231" height="108"/>
@@ -68,18 +69,18 @@
                                             <action selector="didTapOnLayoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PyF-Ay-OAs"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77h-Gz-Y6s">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77h-Gz-Y6s">
                                         <rect key="frame" x="110" y="0.0" width="80" height="80"/>
                                         <state key="normal" image="Layout 2"/>
                                         <connections>
-                                            <action selector="didTapOnLayoutTwoButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qht-Wm-6p4"/>
+                                            <action selector="didTapOnLayoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L2A-Hr-MuO"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1m-Po-22C">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1m-Po-22C">
                                         <rect key="frame" x="220" y="0.0" width="80" height="80"/>
                                         <state key="normal" image="Layout 3"/>
                                         <connections>
-                                            <action selector="didTapOnLayoutThreeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rDn-0i-Ryu"/>
+                                            <action selector="didTapOnLayoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tuH-Sz-nQl"/>
                                         </connections>
                                     </button>
                                 </subviews>

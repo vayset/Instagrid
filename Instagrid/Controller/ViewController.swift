@@ -8,71 +8,92 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+class ViewController: UIViewController {
     
-    @IBOutlet weak var botStackView: UIStackView!
-    @IBOutlet weak var topStackView: UIStackView!
+    // MARK: - IBOutlets / IBActions
     
+    @IBOutlet private weak var botStackView: UIStackView!
+    @IBOutlet private weak var topStackView: UIStackView!
+    
+    @IBAction private func didTapOnLayoutButton(_ sender: UIButton) {
+        createPhotoButtonsAccordingTo(tag: sender.tag)
+    }
+    
+    
+    // MARK: - Internal
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        createPhotoButtonsAccordingTo(tag: 1)
     }
     
-    @IBAction func didTapOnLayoutButton(_ sender: UIButton) {
-        drawUIButtonsForUploadPictures(selectUIButtonsPosition: topStackView, nmbOfButtons: 0)
-        drawUIButtonsForUploadPictures(selectUIButtonsPosition: botStackView, nmbOfButtons: 1)
-    }
     
-    @IBAction func didTapOnLayoutTwoButton(_ sender: UIButton) {
-        drawUIButtonsForUploadPictures(selectUIButtonsPosition: topStackView, nmbOfButtons: 1)
-        drawUIButtonsForUploadPictures(selectUIButtonsPosition: botStackView, nmbOfButtons: 0)
-
+    
+    // MARK: - Private
+    
+    // MARK: - Properties - Private
+    
+    private let photoLayoutProvider = PhotoLayoutProvider()
+    private var buttonToAssignPhoto: UIButton?
+    
+    private func drawUIButtonsForUploadPictures(selectUIButtonsPosition: UIStackView, nmbOfButtons: Int) {
+        removePrecedenteStack(selectUIButtonsPosition: selectUIButtonsPosition)
         
-        
+        for _ in 1...nmbOfButtons {
+            let photoButton = UIButton()
+            photoButton.backgroundColor = .white
+            photoButton.imageView?.contentMode = .scaleAspectFill
+            
+            let plusImage = UIImage(named: "Plus")
+            photoButton.setImage(plusImage, for: .normal)
+            
+            photoButton.addTarget(self, action: #selector(tapOnImage), for: .touchUpInside)
+            selectUIButtonsPosition.addArrangedSubview(photoButton)
+        }
     }
     
-    func photoUpload(vc: UIImagePickerController) {
-        vc.sourceType = .photoLibrary
-        vc.allowsEditing = true
-        vc.delegate = self
-        present(vc, animated: true)
+    @objc func tapOnImage(_ sender: UIButton) {
+        buttonToAssignPhoto = sender
+        presentImagePicker()
     }
     
-    @IBAction func didTapOnLayoutThreeButton(_ sender: UIButton) {
-        drawUIButtonsForUploadPictures(selectUIButtonsPosition: topStackView, nmbOfButtons: 1)
-        drawUIButtonsForUploadPictures(selectUIButtonsPosition: botStackView, nmbOfButtons: 1)
-
-    }
-    
-    func removePrecedenteStack(selectUIButtonsPosition: UIStackView) {
+    private func removePrecedenteStack(selectUIButtonsPosition: UIStackView) {
         for subview in selectUIButtonsPosition.arrangedSubviews {
             subview.removeFromSuperview()
         }
     }
     
-    func drawUIButtonsForUploadPictures(selectUIButtonsPosition: UIStackView, nmbOfButtons: Int) {
-        removePrecedenteStack(selectUIButtonsPosition: selectUIButtonsPosition)
-        for i in 0...nmbOfButtons {
-            let drawOneButton = UIButton()
-            let drawSecondButton = UIButton()
-            let buttons: [UIButton] = [drawOneButton, drawSecondButton]
-            buttons[i].backgroundColor = .white
-            selectUIButtonsPosition.addArrangedSubview(buttons[i])
+    
+    
+    private func presentImagePicker() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true)
+    }
+    
+    private func createPhotoButtonsAccordingTo(tag: Int) {
+        let photoLayout = photoLayoutProvider.layouts[tag]
+        drawUIButtonsForUploadPictures(selectUIButtonsPosition: topStackView, nmbOfButtons: photoLayout.numberOfTopPhoto)
+        drawUIButtonsForUploadPictures(selectUIButtonsPosition: botStackView, nmbOfButtons: photoLayout.numberOfBotPhoto)
+    }
+    
+}
+
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        
+        if let image = info[.originalImage] as? UIImage {
+            buttonToAssignPhoto?.setImage(image, for: .normal)
         }
-//        switch nmbOfSTacks {
-//        case 1:
-//            buttons[0].backgroundColor = .white
-//            selectStackViews.addArrangedSubview(buttons[0])
-//        case 2:
-//                    for i in 0...1 {
-//                        buttons[i].backgroundColor = .white
-//                        selectStackViews.addArrangedSubview(buttons[i])
-//                    }
-//        default:
-//            return
-//        }
-//
+        
+        dismiss(animated: true, completion: nil)
+        
     }
 }
 
