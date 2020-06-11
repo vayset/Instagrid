@@ -15,7 +15,14 @@ class ViewController: UIViewController {
     
     @IBOutlet private weak var botStackView: UIStackView!
     @IBOutlet private weak var topStackView: UIStackView!
-    
+
+    @IBAction func swipeForShareGrid(_ sender: Any) {
+        let items: [Any] = ["test"]
+        let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+
+          // present the view controller
+          self.present(avc, animated: true, completion: nil)
+    }
     @IBAction private func didTapOnLayoutButton(_ sender: UIButton) {
         createPhotoButtonsAccordingTo(tag: sender.tag)
     }
@@ -26,6 +33,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createPhotoButtonsAccordingTo(tag: 1)
+        
     }
     
     
@@ -64,7 +72,9 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    func presentActivityController() {
+
+    }
     
     private func presentImagePicker() {
         let imagePickerController = UIImagePickerController()
@@ -78,6 +88,8 @@ class ViewController: UIViewController {
         drawUIButtonsForUploadPictures(selectUIButtonsPosition: topStackView, nmbOfButtons: photoLayout.numberOfTopPhoto)
         drawUIButtonsForUploadPictures(selectUIButtonsPosition: botStackView, nmbOfButtons: photoLayout.numberOfBotPhoto)
     }
+    
+    
     
 }
 
