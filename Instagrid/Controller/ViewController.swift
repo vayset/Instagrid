@@ -15,16 +15,25 @@ class ViewController: UIViewController {
     
     @IBOutlet private weak var botStackView: UIStackView!
     @IBOutlet private weak var topStackView: UIStackView!
-
+    @IBOutlet weak var test: UIButton!
+    @IBOutlet weak var buttonTwo: UIButton!
+    @IBOutlet weak var buttonThree: UIButton!
+    
+    
     @IBAction func swipeForShareGrid(_ sender: Any) {
-        let items: [Any] = ["test"]
-        let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
-
-          // present the view controller
-          self.present(avc, animated: true, completion: nil)
+        let translationXAndY = CGAffineTransform(translationX: 0, y: -view.frame.height)
+        
+        UIView.animate(withDuration: 0.5) {
+            self.mainGridView.transform = translationXAndY
+        }
+        
+        presentActivityController()
     }
     @IBAction private func didTapOnLayoutButton(_ sender: UIButton) {
+        
+        
         createPhotoButtonsAccordingTo(tag: sender.tag)
+        buttonThree.addTarget(self, action: #selector(fireworks), for: .touchUpInside)
     }
     
     
@@ -33,7 +42,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createPhotoButtonsAccordingTo(tag: 1)
-        
     }
     
     
@@ -45,6 +53,7 @@ class ViewController: UIViewController {
     private let photoLayoutProvider = PhotoLayoutProvider()
     private var buttonToAssignPhoto: UIButton?
     
+    @IBOutlet weak var mainGridView: UIView!
     private func drawUIButtonsForUploadPictures(selectUIButtonsPosition: UIStackView, nmbOfButtons: Int) {
         removePrecedenteStack(selectUIButtonsPosition: selectUIButtonsPosition)
         
@@ -61,6 +70,14 @@ class ViewController: UIViewController {
         }
     }
     
+    @objc func fireworks(_ sender: UIButton) {
+        
+        if sender === buttonTwo || sender === buttonThree  {
+            self.buttonThree.setImage(UIImage(named: "Selected"), for: .selected)
+            
+        }
+    }
+    
     @objc func tapOnImage(_ sender: UIButton) {
         buttonToAssignPhoto = sender
         presentImagePicker()
@@ -72,11 +89,24 @@ class ViewController: UIViewController {
         }
     }
     
-    func presentActivityController() {
-
+    private func presentActivityController() {
+        
+        let image = convertViewToImage(view: mainGridView)
+        
+        let items: [Any] = [image]
+        let avc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        
+        avc.completionWithItemsHandler = { _, _,_,_ in
+            UIView.animate(withDuration: 0.2) {
+                self.mainGridView.transform = .identity
+            }
+            
+        }
+        self.present(avc, animated: true, completion: nil)
     }
     
     private func presentImagePicker() {
+        
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
@@ -87,9 +117,15 @@ class ViewController: UIViewController {
         let photoLayout = photoLayoutProvider.layouts[tag]
         drawUIButtonsForUploadPictures(selectUIButtonsPosition: topStackView, nmbOfButtons: photoLayout.numberOfTopPhoto)
         drawUIButtonsForUploadPictures(selectUIButtonsPosition: botStackView, nmbOfButtons: photoLayout.numberOfBotPhoto)
+        
     }
     
-    
+    func convertViewToImage(view: UIView) -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
+        return renderer.image { rendererContext in
+            view.layer.render(in: rendererContext.cgContext)
+        }
+    }
     
 }
 
