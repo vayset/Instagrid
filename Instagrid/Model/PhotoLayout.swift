@@ -9,6 +9,10 @@
 import Foundation
 
 class PhotoLayout {
+  // MARK: - Internal
+
+  // MARK: - Properties - Internal
+    
     init(numberOfTopPhoto: Int, numberOfBotPhoto: Int) {
         self.numberOfTopPhoto = numberOfTopPhoto
         self.numberOfBotPhoto = numberOfBotPhoto

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,16 +15,16 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Photo Layout View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Instagrid" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PhotoLayoutViewController" customModule="Instagrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMm-kb-6F1">
-                                <rect key="frame" x="128" y="57" width="119" height="39"/>
+                                <rect key="frame" x="388.66666666666669" y="13" width="118.66666666666669" height="39"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="Q7e-kq-u0f"/>
                                     <constraint firstAttribute="width" constant="118.67" id="juL-Wm-sva"/>
@@ -34,25 +34,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="d8F-nB-rMf">
-                                <rect key="frame" x="37.666666666666657" y="693" width="300" height="80"/>
+                                <rect key="frame" x="756" y="57" width="80" height="300"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="11n-9o-NlV">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                        <state key="normal" image="Layout 1"/>
+                                        <state key="normal" backgroundImage="Layout 1"/>
                                         <connections>
                                             <action selector="didTapOnLayoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PyF-Ay-OAs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77h-Gz-Y6s">
-                                        <rect key="frame" x="110" y="0.0" width="80" height="80"/>
-                                        <state key="normal" image="Layout 2"/>
+                                        <rect key="frame" x="0.0" y="110" width="80" height="80"/>
+                                        <color key="tintColor" red="0.91980725529999996" green="0.38859089029999999" blue="0.32281764340000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" backgroundImage="Layout 2"/>
                                         <connections>
-                                            <action selector="didTapOnLayoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="L2A-Hr-MuO"/>
+                                            <action selector="didTapOnLayoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yv1-5M-bT4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1m-Po-22C">
-                                        <rect key="frame" x="220" y="0.0" width="80" height="80"/>
-                                        <state key="normal" image="Layout 3"/>
+                                        <rect key="frame" x="0.0" y="220" width="80" height="80"/>
+                                        <state key="normal" backgroundImage="Layout 3"/>
                                         <connections>
                                             <action selector="didTapOnLayoutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tuH-Sz-nQl"/>
                                         </connections>
@@ -77,10 +78,13 @@
                                 </variation>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="78Z-bg-bSv">
-                                <rect key="frame" x="107.33333333333333" y="219.66666666666666" width="160.33333333333337" height="46.999999999999972"/>
+                                <rect key="frame" x="137" y="174.66666666666666" width="160.66666666666663" height="64.666666666666657"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="ArrowUp" translatesAutoresizingMaskIntoConstraints="NO" id="w8j-LQ-rFd">
+                                        <rect key="frame" x="73.333333333333343" y="0.0" width="14" height="10"/>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3t-Ez-WlS">
-                                        <rect key="frame" x="0.0" y="0.0" width="160.33333333333334" height="47"/>
+                                        <rect key="frame" x="35.66666666666665" y="17.999999999999996" width="89.333333333333314" height="46.666666666666657"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,17 +106,17 @@
                                 </variation>
                             </stackView>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="eme-H4-AgB">
-                                <rect key="frame" x="57" y="275.66666666666669" width="261" height="261.00000000000006"/>
+                                <rect key="frame" x="307.66666666666669" y="56" width="281.00000000000006" height="281"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="lmj-Kh-ui7">
-                                        <rect key="frame" x="15" y="15" width="231" height="231"/>
+                                        <rect key="frame" x="15" y="15" width="251" height="251"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="TgH-rd-fMh">
-                                                <rect key="frame" x="0.0" y="0.0" width="231" height="108"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="251" height="118"/>
                                                 <gestureRecognizers/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="DMG-Gl-RXb">
-                                                <rect key="frame" x="0.0" y="123" width="231" height="108"/>
+                                                <rect key="frame" x="0.0" y="133" width="251" height="118"/>
                                             </stackView>
                                         </subviews>
                                     </stackView>
@@ -134,15 +138,12 @@
                             <constraint firstItem="eme-H4-AgB" firstAttribute="top" secondItem="78Z-bg-bSv" secondAttribute="bottom" constant="8.6699999999999999" id="0lC-F2-hnx"/>
                             <constraint firstItem="eme-H4-AgB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4mz-kj-QQw"/>
                             <constraint firstAttribute="bottom" secondItem="d8F-nB-rMf" secondAttribute="bottom" constant="15" id="4t8-Gv-xsn"/>
-                            <constraint firstItem="d8F-nB-rMf" firstAttribute="leading" secondItem="eme-H4-AgB" secondAttribute="trailing" constant="135" id="4u3-tK-Cs8">
-                                <variation key="heightClass=compact" constant="84"/>
-                            </constraint>
                             <constraint firstItem="78Z-bg-bSv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="2" id="7IA-hS-qbd">
                                 <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d8F-nB-rMf" secondAttribute="trailing" constant="16" id="A2v-5M-TQx"/>
                             <constraint firstItem="eme-H4-AgB" firstAttribute="leading" secondItem="78Z-bg-bSv" secondAttribute="trailing" constant="8.3300000000000001" id="GXK-J1-7Tk">
-                                <variation key="heightClass=compact" constant="-0.5"/>
+                                <variation key="heightClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eme-H4-AgB" secondAttribute="trailing" constant="57" id="K2e-4h-C1g"/>
                             <constraint firstItem="d8F-nB-rMf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-5" id="QIp-81-UKv"/>
@@ -151,9 +152,7 @@
                                 <variation key="heightClass=compact" constant="56"/>
                             </constraint>
                             <constraint firstItem="ZMm-kb-6F1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Yd9-mI-OGQ"/>
-                            <constraint firstItem="d8F-nB-rMf" firstAttribute="leading" secondItem="eme-H4-AgB" secondAttribute="trailing" constant="135" id="cjY-sv-lgZ">
-                                <variation key="heightClass=compact" constant="84"/>
-                            </constraint>
+                            <constraint firstItem="eme-H4-AgB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cWv-6W-dru"/>
                             <constraint firstAttribute="bottom" secondItem="d8F-nB-rMf" secondAttribute="bottom" constant="15" id="f0C-d4-KAS"/>
                             <constraint firstItem="d8F-nB-rMf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gbt-0J-E9a"/>
                             <constraint firstAttribute="bottom" secondItem="d8F-nB-rMf" secondAttribute="bottom" constant="15" id="kBP-c6-Bwh"/>
@@ -175,8 +174,6 @@
                                 <exclude reference="GXK-J1-7Tk"/>
                                 <exclude reference="oZJ-ug-swY"/>
                                 <exclude reference="4t8-Gv-xsn"/>
-                                <exclude reference="4u3-tK-Cs8"/>
-                                <exclude reference="cjY-sv-lgZ"/>
                                 <exclude reference="f0C-d4-KAS"/>
                                 <exclude reference="gbt-0J-E9a"/>
                                 <exclude reference="kBP-c6-Bwh"/>
@@ -197,9 +194,7 @@
                                 <exclude reference="S0z-ed-xxp"/>
                                 <include reference="oZJ-ug-swY"/>
                                 <exclude reference="4t8-Gv-xsn"/>
-                                <include reference="4u3-tK-Cs8"/>
                                 <exclude reference="QIp-81-UKv"/>
-                                <include reference="cjY-sv-lgZ"/>
                                 <exclude reference="f0C-d4-KAS"/>
                                 <include reference="gbt-0J-E9a"/>
                                 <exclude reference="kBP-c6-Bwh"/>
@@ -213,11 +208,14 @@
                     </view>
                     <connections>
                         <outlet property="botStackView" destination="DMG-Gl-RXb" id="3cJ-iT-UPP"/>
-                        <outlet property="buttonThree" destination="j1m-Po-22C" id="K96-Md-cHy"/>
-                        <outlet property="buttonTwo" destination="77h-Gz-Y6s" id="sQz-2G-4Ph"/>
                         <outlet property="mainGridView" destination="eme-H4-AgB" id="YQ6-Pl-12B"/>
-                        <outlet property="test" destination="11n-9o-NlV" id="2Z9-lm-gda"/>
+                        <outlet property="shareArrowImageView" destination="w8j-LQ-rFd" id="JaI-pp-cJ4"/>
+                        <outlet property="swipeToShareLabel" destination="i3t-Ez-WlS" id="fzU-1K-V65"/>
+                        <outlet property="swipeToShareRecognizer" destination="3ZK-th-cmu" id="HKy-Fn-1o2"/>
                         <outlet property="topStackView" destination="TgH-rd-fMh" id="csg-aD-cfF"/>
+                        <outletCollection property="layoutButtons" destination="11n-9o-NlV" collectionClass="NSMutableArray" id="fiB-zg-c4r"/>
+                        <outletCollection property="layoutButtons" destination="77h-Gz-Y6s" collectionClass="NSMutableArray" id="hoz-GY-o4d"/>
+                        <outletCollection property="layoutButtons" destination="j1m-Po-22C" collectionClass="NSMutableArray" id="jpf-mk-lCg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -231,6 +229,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ArrowUp" width="14" height="10"/>
         <image name="Layout 1" width="80" height="80"/>
         <image name="Layout 2" width="80" height="80"/>
         <image name="Layout 3" width="80" height="80"/>

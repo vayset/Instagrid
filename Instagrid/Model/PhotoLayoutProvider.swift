@@ -10,6 +10,10 @@ import Foundation
 
 
 class PhotoLayoutProvider {
+    // MARK: - Internal
+
+    // MARK: - Properties - Internal
+    
     let layouts: [PhotoLayout] = [
         .init(numberOfTopPhoto: 1, numberOfBotPhoto: 2),
         .init(numberOfTopPhoto: 2, numberOfBotPhoto: 1),

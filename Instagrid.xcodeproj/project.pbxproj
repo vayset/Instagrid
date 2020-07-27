@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F557BC52470C7D900C75B0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F557BC42470C7D900C75B0A /* AppDelegate.swift */; };
-		3F557BC92470C7D900C75B0A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F557BC82470C7D900C75B0A /* ViewController.swift */; };
+		3F557BC92470C7D900C75B0A /* PhotoLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F557BC82470C7D900C75B0A /* PhotoLayoutViewController.swift */; };
 		3F557BCC2470C7D900C75B0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F557BCA2470C7D900C75B0A /* Main.storyboard */; };
 		3F557BCE2470C7DC00C75B0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F557BCD2470C7DC00C75B0A /* Assets.xcassets */; };
 		3F557BD12470C7DC00C75B0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F557BCF2470C7DC00C75B0A /* LaunchScreen.storyboard */; };
@@ -24,7 +24,7 @@
 		3F557BC12470C7D900C75B0A /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F557BC42470C7D900C75B0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F557BC62470C7D900C75B0A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3F557BC82470C7D900C75B0A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3F557BC82470C7D900C75B0A /* PhotoLayoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLayoutViewController.swift; sourceTree = "<group>"; };
 		3F557BCB2470C7D900C75B0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F557BCD2470C7DC00C75B0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F557BD02470C7DC00C75B0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		3F7C0EF7247224F100B44A6A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3F557BC82470C7D900C75B0A /* ViewController.swift */,
+				3F557BC82470C7D900C75B0A /* PhotoLayoutViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,7 +190,7 @@
 			files = (
 				3F5B8E8B247454500043A4EF /* SceneDelegate.swift in Sources */,
 				3FF2CB6624900A8B00E1CCDE /* PhotoLayout.swift in Sources */,
-				3F557BC92470C7D900C75B0A /* ViewController.swift in Sources */,
+				3F557BC92470C7D900C75B0A /* PhotoLayoutViewController.swift in Sources */,
 				3F557BC52470C7D900C75B0A /* AppDelegate.swift in Sources */,
 				3FF2CB6424900A3600E1CCDE /* PhotoLayoutProvider.swift in Sources */,
 			);
@@ -339,6 +339,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BAJKB9L735;
 				INFOPLIST_FILE = Instagrid/Other/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,6 +358,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BAJKB9L735;
 				INFOPLIST_FILE = Instagrid/Other/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

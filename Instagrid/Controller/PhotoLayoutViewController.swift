@@ -9,19 +9,21 @@
 import UIKit
 
 
-class ViewController: UIViewController {
+class PhotoLayoutViewController: UIViewController {
     
     // MARK: - IBOutlets / IBActions
     
     @IBOutlet private weak var botStackView: UIStackView!
     @IBOutlet private weak var topStackView: UIStackView!
-    @IBOutlet weak var test: UIButton!
-    @IBOutlet weak var buttonTwo: UIButton!
-    @IBOutlet weak var buttonThree: UIButton!
+    @IBOutlet var layoutButtons: [UIButton]!
+    @IBOutlet private weak var mainGridView: UIView!
+    @IBOutlet private weak var swipeToShareLabel: UILabel!
+    @IBOutlet private weak var shareArrowImageView: UIImageView!
+    @IBOutlet private var swipeToShareRecognizer: UISwipeGestureRecognizer!
     
     
-    @IBAction func swipeForShareGrid(_ sender: Any) {
-        let translationXAndY = CGAffineTransform(translationX: 0, y: -view.frame.height)
+    @IBAction private func swipeForShareGrid(_ sender: Any) {
+        let translationXAndY = CGAffineTransform(translationX: gridTranslationXValue, y: gridTranslationYValue)
         
         UIView.animate(withDuration: 0.5) {
             self.mainGridView.transform = translationXAndY
@@ -30,10 +32,15 @@ class ViewController: UIViewController {
         presentActivityController()
     }
     @IBAction private func didTapOnLayoutButton(_ sender: UIButton) {
-        
+       
+        for button in layoutButtons {
+            button.isSelected = false
+        }
+
+        sender.isSelected = true
         
         createPhotoButtonsAccordingTo(tag: sender.tag)
-        buttonThree.addTarget(self, action: #selector(fireworks), for: .touchUpInside)
+        
     }
     
     
@@ -41,8 +48,25 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUIAccordingToOrientation()
+        setupLayoutButtons()
         createPhotoButtonsAccordingTo(tag: 1)
     }
+    
+   
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        
+        
+        coordinator.animate(alongsideTransition: { _ in
+            self.updateUIAccordingToOrientation()
+            
+        })
+        
+        
+    }
+    
     
     
     
@@ -53,7 +77,49 @@ class ViewController: UIViewController {
     private let photoLayoutProvider = PhotoLayoutProvider()
     private var buttonToAssignPhoto: UIButton?
     
-    @IBOutlet weak var mainGridView: UIView!
+    private var windowInterfaceOrientation: UIInterfaceOrientation? {
+        if #available(iOS 13.0, *) {
+            return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
+        } else {
+            return UIApplication.shared.statusBarOrientation
+        }
+    }
+    
+    private var gridTranslationXValue: CGFloat = 0
+    private var gridTranslationYValue: CGFloat = 0
+    
+    // MARK: - Methods - Private
+    
+    private func updateUIAccordingToOrientation() {
+        guard let orientation = windowInterfaceOrientation else { return }
+        
+        if orientation == .portrait {
+            swipeToShareLabel.text = "swipe up to share"
+            shareArrowImageView.transform = .identity
+            swipeToShareRecognizer.direction = .up
+            
+            gridTranslationXValue = 0
+            gridTranslationYValue = -view.frame.height
+            
+        } else {
+            swipeToShareLabel.text = "swipe left to share"
+            shareArrowImageView.transform = CGAffineTransform(rotationAngle: -(.pi / 2))
+            swipeToShareRecognizer.direction = .left
+            
+            gridTranslationXValue = -view.frame.width
+            gridTranslationYValue = 0
+        }
+    }
+    
+    
+    private func setupLayoutButtons() {
+        
+        let image = UIImage(named: "Selected")
+        for button in layoutButtons {
+            button.setImage(image, for: .selected)
+        }
+    }
+    
     private func drawUIButtonsForUploadPictures(selectUIButtonsPosition: UIStackView, nmbOfButtons: Int) {
         removePrecedenteStack(selectUIButtonsPosition: selectUIButtonsPosition)
         
@@ -65,20 +131,20 @@ class ViewController: UIViewController {
             let plusImage = UIImage(named: "Plus")
             photoButton.setImage(plusImage, for: .normal)
             
-            photoButton.addTarget(self, action: #selector(tapOnImage), for: .touchUpInside)
+            photoButton.addTarget(self, action: #selector(tapOnImage), for: . touchUpInside)
             selectUIButtonsPosition.addArrangedSubview(photoButton)
         }
     }
     
-    @objc func fireworks(_ sender: UIButton) {
+    @objc private func fireworks(_ sender: UIButton) {
         
-        if sender === buttonTwo || sender === buttonThree  {
-            self.buttonThree.setImage(UIImage(named: "Selected"), for: .selected)
-            
-        }
+        //        if sender === buttonTwo || sender === buttonThree  {
+        //            self.buttonThree.setImage(UIImage(named: "Selected"), for: .selected)
+        //
+        //        }
     }
     
-    @objc func tapOnImage(_ sender: UIButton) {
+    @objc private func tapOnImage(_ sender: UIButton) {
         buttonToAssignPhoto = sender
         presentImagePicker()
     }
@@ -117,10 +183,9 @@ class ViewController: UIViewController {
         let photoLayout = photoLayoutProvider.layouts[tag]
         drawUIButtonsForUploadPictures(selectUIButtonsPosition: topStackView, nmbOfButtons: photoLayout.numberOfTopPhoto)
         drawUIButtonsForUploadPictures(selectUIButtonsPosition: botStackView, nmbOfButtons: photoLayout.numberOfBotPhoto)
-        
     }
     
-    func convertViewToImage(view: UIView) -> UIImage {
+    private func convertViewToImage(view: UIView) -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: view.bounds)
         return renderer.image { rendererContext in
             view.layer.render(in: rendererContext.cgContext)
@@ -129,9 +194,12 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // MARK: - Extension
+
+
+extension PhotoLayoutViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(
+     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
