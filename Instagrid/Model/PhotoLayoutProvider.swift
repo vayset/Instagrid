@@ -19,7 +19,7 @@ class PhotoLayoutProvider {
     weak var delegate: PhotoLayoutProviderDelegate?
     
     // MARK: - Internal
-
+    
     // MARK: - Properties - Internal
     
     let layouts: [PhotoLayout] = [
